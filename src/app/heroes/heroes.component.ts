@@ -12,7 +12,8 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
-import { HEROES } from '../mock-heroes';  //mock
+// import { HEROES } from '../mock-heroes';  //mock
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-heroes',
@@ -22,20 +23,37 @@ import { HEROES } from '../mock-heroes';  //mock
 
 export class HeroesComponent implements OnInit {
   
-  heroes = HEROES;  //public property for binding
-
-  constructor() { }
+  // heroes = HEROES;  //public property for binding
+  heroes: Hero[];
+  //When Angular creates a HeroesComponent, the Dependency Injection system sets the heroService parameter to the singleton instance of HeroService.
+  constructor(private heroService: HeroService) { }
 
   ngOnInit() {
+    this.getHeroes();
   }
+
+  //Asynchronous
+  //Observable.subscribe() is the critical difference.  
+  //The new version waits for the Observable to emit the array of heroes— which could happen now or several minutes from now. 
+  //Then "subscribe" passes the emitted array to the callback, which sets the component's heroes property.
+  getHeroes(): void {
+    this.heroService.getHeroes()
+        .subscribe(heroes => this.heroes = heroes);
+  }
+
+  //This is synchronous
+  // getHeroes(): void {
+  //   this.heroes = this.heroService.getHeroes();
+  // }
+
 
   // selectedHero: Hero = {
   //   id: 1,
   //   name: 'Windstorm'
   // };
 
+  //deals with the selectedHero property
   selectedHero: Hero;
-
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }

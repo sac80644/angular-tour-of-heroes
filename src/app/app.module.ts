@@ -5,6 +5,10 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { HeroService } from './hero.service';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './message.service';
 
 // Add the FormsModule to the @NgModule metadata's imports array, which contains a list of external modules that the app needs.
 // This allows us to put a form on the heroes html for editing and input.
@@ -17,13 +21,17 @@ import { HeroesComponent } from './heroes/heroes.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent
+    HeroesComponent,
+    HeroDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
+  ],                //The providers array tells Angular to create a single, shared instance of HeroService and inject into any class that asks for it.
+  providers: [  
+    HeroService, MessageService
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

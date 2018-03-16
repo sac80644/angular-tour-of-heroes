@@ -25,7 +25,7 @@ using NgModelController, which is created and exposed by this directive.
 ngModel is responsible for: Binding the view into the model, which other directives such as input , 
 textarea or select require. -->
 
-<div *ngIf="selectedHero">
+<!-- <div *ngIf="selectedHero">
  
     <h2>{{ selectedHero.name | uppercase }} Details</h2>
     <div><span>id: </span>{{selectedHero.id}}</div>
@@ -35,6 +35,12 @@ textarea or select require. -->
       </label>
     </div>
    
-  </div>
+  </div> -->
 
+
+  <!-- the detail above has been moved to the app-hero-detail component and it displayed here -->
+  <!-- [hero]="selectedHero" is an Angular property binding. This is one way binding.  Now when the user clicks a hero in the list, 
+    the selectedHero changes. When the selectedHero changes, the property binding updates hero and the HeroDetailComponent displays the new hero. -->
+
+  <app-hero-detail [hero]="selectedHero"></app-hero-detail>  <!-- one way property binding  -->
 
