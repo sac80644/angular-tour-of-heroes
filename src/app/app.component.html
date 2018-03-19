@@ -23,5 +23,16 @@
 Remember that app-heroes is the element selector for the HeroesComponent. So add an <app-heroes> element to the AppComponent template file, just below the title. -->
   
  <h1>{{title}}</h1>
- <app-heroes></app-heroes>
+ <h2>Hello Hero!</h2>
+ <nav>
+   <a href="">Home</a>
+    <a routerLink="/heroes">Heroes</a>
+    <a routerLink="/dashboard">Dashboard</a>
+    <!-- <a routerLink="/detail">Detail</a> -->
+</nav>
+ <!-- <app-heroes></app-heroes> -->
+ <!-- You removed <app-heroes> because you will only display the HeroesComponent when the user navigates to it.
+The <router-outlet> tells the router where to display routed views. -->
+
+ <router-outlet></router-outlet>
  <app-messages></app-messages>

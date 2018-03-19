@@ -6,15 +6,6 @@
 <div><span>id: </span>{{selectedHero.id}}</div>
 <div><span>name: </span>{{selectedHero.name}}</div> -->
 
-  <h2>My Heroes</h2>
-  <ul class="heroes">
-    <li *ngFor="let hero of heroes"
-      [class.selected]="hero === selectedHero"
-      (click)="onSelect(hero)">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </li>
-  </ul>
-
 <!-- 
 [(ngModel)] is Angular's two-way data binding syntax. 
 Here it binds the hero.name property to the HTML textbox so that data can flow in both directions: 
@@ -42,5 +33,15 @@ textarea or select require. -->
   <!-- [hero]="selectedHero" is an Angular property binding. This is one way binding.  Now when the user clicks a hero in the list, 
     the selectedHero changes. When the selectedHero changes, the property binding updates hero and the HeroDetailComponent displays the new hero. -->
 
-  <app-hero-detail [hero]="selectedHero"></app-hero-detail>  <!-- one way property binding  -->
+  <!-- one way property binding  -->
+  <!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> --> <!-- removed for routing
 
+  <!-- routing -->
+  <h2>My Heroes</h2>
+  <ul class="heroes">
+    <li *ngFor="let hero of heroes">
+      <a routerLink="/detail/{{hero.id}}">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      </a>
+    </li>
+  </ul>

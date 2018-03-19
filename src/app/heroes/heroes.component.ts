@@ -53,9 +53,10 @@ export class HeroesComponent implements OnInit {
   // };
 
   //deals with the selectedHero property
-  selectedHero: Hero;
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-  }
+  //not used after implementing routing
+  // selectedHero: Hero;
+  // onSelect(hero: Hero): void {
+  //   this.selectedHero = hero;
+  // }
 
 }
